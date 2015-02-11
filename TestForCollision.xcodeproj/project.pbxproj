@@ -28,6 +28,9 @@
 		FF4C70F21A854B9F00FB3622 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C70E61A854B9F00FB3622 /* SKTEffects.swift */; };
 		FF4C70F31A854B9F00FB3622 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C70E71A854B9F00FB3622 /* SKTTimingFunctions.swift */; };
 		FF4C70F41A854B9F00FB3622 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C70E81A854B9F00FB3622 /* Vector3.swift */; };
+		FF4C70F61A893D1F00FB3622 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70F51A893D1F00FB3622 /* circle.png */; };
+		FF4C70F81A8BBC6300FB3622 /* 50x50_ball_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70F71A8BBC6300FB3622 /* 50x50_ball_selected.png */; };
+		FF4C70FA1A8BBC7400FB3622 /* circle_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70F91A8BBC7400FB3622 /* circle_selected.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		FF4C70E61A854B9F00FB3622 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		FF4C70E71A854B9F00FB3622 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		FF4C70E81A854B9F00FB3622 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		FF4C70F51A893D1F00FB3622 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = ../../../LetsGame/circle.png; sourceTree = "<group>"; };
+		FF4C70F71A8BBC6300FB3622 /* 50x50_ball_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 50x50_ball_selected.png; path = ../../../interstellar/50x50_ball_selected.png; sourceTree = "<group>"; };
+		FF4C70F91A8BBC7400FB3622 /* circle_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle_selected.png; path = ../../../LetsGame/circle_selected.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,9 @@
 		FF4C705D1A80573E00FB3622 /* TestForCollision */ = {
 			isa = PBXGroup;
 			children = (
+				FF4C70F91A8BBC7400FB3622 /* circle_selected.png */,
+				FF4C70F71A8BBC6300FB3622 /* 50x50_ball_selected.png */,
+				FF4C70F51A893D1F00FB3622 /* circle.png */,
 				FF4C70DC1A854B9F00FB3622 /* SKTUtils */,
 				FF4C70841A80581800FB3622 /* 50x50_ball.png */,
 				FF4C70601A80573E00FB3622 /* AppDelegate.swift */,
@@ -246,11 +255,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4C70FA1A8BBC7400FB3622 /* circle_selected.png in Resources */,
 				FF4C706F1A80573F00FB3622 /* LaunchScreen.xib in Resources */,
 				FF4C706C1A80573E00FB3622 /* Images.xcassets in Resources */,
 				FF4C70631A80573E00FB3622 /* GameScene.sks in Resources */,
+				FF4C70F61A893D1F00FB3622 /* circle.png in Resources */,
 				FF4C70851A80581800FB3622 /* 50x50_ball.png in Resources */,
 				FF4C706A1A80573E00FB3622 /* Main.storyboard in Resources */,
+				FF4C70F81A8BBC6300FB3622 /* 50x50_ball_selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

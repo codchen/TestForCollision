@@ -36,6 +36,7 @@ struct message{
     var dy: CGFloat
     var count: Int
     var time: NSTimeInterval
+    var number: UInt16
 }
 
 class GameViewController: UIViewController, MCSessionDelegate, MCBrowserViewControllerDelegate {
@@ -46,7 +47,8 @@ class GameViewController: UIViewController, MCSessionDelegate, MCBrowserViewCont
     var session : MCSession!
     var peerID: MCPeerID!
     var myScene: GameScene!
-    var lastCount: Dictionary<String, Int> = Dictionary<String, Int>()
+    //var lastCount: Dictionary<String, Int> = Dictionary<String, Int>()
+    var lastCount = 0
     
     var lastFinish: NSDate!
     var currentTime: NSDate!
@@ -94,6 +96,7 @@ class GameViewController: UIViewController, MCSessionDelegate, MCBrowserViewCont
                 let skView = self.view as SKView
                 skView.showsFPS = true
                 skView.showsNodeCount = true
+                skView.showsPhysics = true
                 
                 /* Sprite Kit applies additional optimizations to improve rendering performance */
                 skView.ignoresSiblingOrder = true
@@ -167,28 +170,14 @@ class GameViewController: UIViewController, MCSessionDelegate, MCBrowserViewCont
                 self.currentTime = NSDate()
                 if (self.myScene != nil){
                     var thisMessage = UnsafePointer<message>(data.bytes).memory
-                    //println("x: \(thisMessage.x), y: \(thisMessage.y)\n")
-//                    print("Latency: \(self.currentTime.timeIntervalSince1970 - thisMessage.time)\n")
-                    if (contains(self.myScene.peerList, peerID.displayName) == false){
-                        var newNode = SKSpriteNode(imageNamed: "50x50_ball") as SKSpriteNode
-                        newNode.position = CGPoint(x: thisMessage.x, y: thisMessage.y)
-                        newNode.name = peerID.displayName
-                        newNode.physicsBody = SKPhysicsBody(circleOfRadius: newNode.size.width / 2)
-                        newNode.physicsBody?.velocity = CGVector(dx: thisMessage.dx, dy: thisMessage.dy)
-                        newNode.physicsBody?.linearDamping = 0
-                        newNode.physicsBody?.restitution = 1
-                        self.myScene.addChild(newNode)
+                    if (thisMessage.count > self.lastCount){
                         
-                        self.myScene.peerList.append(peerID.displayName)
-                        self.myScene.peerNodesInfo[peerID.displayName] = nodeInfo(x: thisMessage.x, y: thisMessage.y, dx: thisMessage.dx, dy: thisMessage.dy)
-                        self.myScene.peerNodesUpdated[peerID.displayName] = true
+                        self.lastCount = thisMessage.count
                         
-                        self.lastCount[peerID.displayName] = thisMessage.count
-                    }
-                    else if (thisMessage.count > self.lastCount[peerID.displayName]){
-                        self.lastCount[peerID.displayName] = thisMessage.count
-                        self.myScene.peerNodesInfo[peerID.displayName] = nodeInfo(x: thisMessage.x, y: thisMessage.y, dx: thisMessage.dx, dy: thisMessage.dy)
-                        self.myScene.peerNodesUpdated[peerID.displayName] = true
+                        self.myScene.opponentsInfo[Int(thisMessage.number)] = nodeInfo(x: thisMessage.x, y: thisMessage.y, dx: thisMessage.dx, dy: thisMessage.dy, dt: CGFloat(thisMessage.time), number: thisMessage.number)
+                        
+                        self.myScene.opponentsUpdated[Int(thisMessage.number)] = true
+                        
                     }
                 }
             }
