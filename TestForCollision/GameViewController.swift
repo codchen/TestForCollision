@@ -28,6 +28,11 @@ extension SKNode {
         }
     }
 }
+//
+//enum messageType: Int{
+//    case movement
+//    case dead
+//}
 
 struct message{
     var x: CGFloat
@@ -36,7 +41,13 @@ struct message{
     var dy: CGFloat
     var count: Int
     var time: NSTimeInterval
-    var number: UInt16
+    var number: Int
+    //var type: Int
+}
+
+struct deadInfo{
+    var number: Int
+    var type: Int
 }
 
 class GameViewController: UIViewController, MCSessionDelegate, MCBrowserViewControllerDelegate {
@@ -170,15 +181,21 @@ class GameViewController: UIViewController, MCSessionDelegate, MCBrowserViewCont
                 self.currentTime = NSDate()
                 if (self.myScene != nil){
                     var thisMessage = UnsafePointer<message>(data.bytes).memory
-                    if (thisMessage.count > self.lastCount){
-                        
-                        self.lastCount = thisMessage.count
-                        
-                        self.myScene.opponentsInfo[Int(thisMessage.number)] = nodeInfo(x: thisMessage.x, y: thisMessage.y, dx: thisMessage.dx, dy: thisMessage.dy, dt: CGFloat(thisMessage.time), number: thisMessage.number)
-                        
-                        self.myScene.opponentsUpdated[Int(thisMessage.number)] = true
-                        
-                    }
+//                    if (thisMessage.type == 0){
+                        if (thisMessage.count > self.lastCount){
+                            
+                            self.lastCount = thisMessage.count
+                            
+                            self.myScene.opponentsInfo[thisMessage.number] = nodeInfo(x: thisMessage.x, y: thisMessage.y, dx: thisMessage.dx, dy: thisMessage.dy, dt: CGFloat(thisMessage.time), number: thisMessage.number)
+                            
+                            self.myScene.opponentsUpdated[thisMessage.number] = true
+                            
+                        }
+//                    }
+//                    else if (thisMessage.type == 1){
+//                        println("\(thisMessage.number)\n")
+//                        self.myScene.deleteOpponent(thisMessage.number)
+//                    }
                 }
             }
             

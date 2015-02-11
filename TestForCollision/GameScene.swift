@@ -16,7 +16,7 @@ struct nodeInfo {
     var dx: CGFloat
     var dy: CGFloat
     var dt: CGFloat
-    var number: UInt16
+    var number: Int
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -31,7 +31,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var opponents: [SKSpriteNode] = []
     var opponentsUpdated: [Bool] = []
     var opponentsInfo: [nodeInfo] = []
-    var count: UInt16 = 0
+    var count: Int = 0
+    
+    var deleteListMy: [Int] = []
 
     var session: MCSession!
     var motionManager: CMMotionManager!
@@ -110,7 +112,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
    
     override func update(currentTime: CFTimeInterval) {
+        enumerateChildNodesWithName("hole"){hole, _ in
+            self.enumerateChildNodesWithName("node1"){node, _ in
+                if (node.position.distanceTo(hole.position) < 30){
+                    node.removeFromParent()
+                }
+            }
+            self.enumerateChildNodesWithName("node2"){node, _ in
+                if (node.position.distanceTo(hole.position) < 30){
+                    node.removeFromParent()
+                }
+            }
+        }
     }
+    
+//    func deleteMyNode(index: Int){
+//        self.myNodes[index].removeFromParent()
+//        self.myNodes.removeAtIndex(index)
+//        self.sendDead(index)
+//    }
+//    
+//    func deleteOpponent(index: Int){
+//        self.opponents[index].removeFromParent()
+//        self.opponents.removeAtIndex(index)
+//        self.opponentsInfo.removeAtIndex(index)
+//        self.opponentsUpdated.removeAtIndex(index)
+//    }
     
     override func didEvaluateActions() {
         update_peer_dead_reckoning()
@@ -152,7 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if session.connectedPeers.count >= 1{
             for index in 0...(myNodes.count-1){
                 var error: NSError?
-                var m = message(x: myNodes[index].position.x, y: myNodes[index].position.y, dx: myNodes[index].physicsBody!.velocity.dx, dy: myNodes[index].physicsBody!.velocity.dy, count: c, time: NSDate().timeIntervalSince1970, number: UInt16(index))
+                var m = message(x: myNodes[index].position.x, y: myNodes[index].position.y, dx: myNodes[index].physicsBody!.velocity.dx, dy: myNodes[index].physicsBody!.velocity.dy, count: c, time: NSDate().timeIntervalSince1970, number: index)
                 c++
                 let data = NSData(bytes: &m, length: sizeof(message))
                 session.sendData(data, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Unreliable, error: &error)
@@ -160,4 +187,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+//    func sendDead(index: Int){
+//        if session.connectedPeers.count >= 1{
+//            var error: NSError?
+//            var m = deadInfo(number: index, type: 1)
+//            let data = NSData(bytes: &m, length: sizeof(deadInfo))
+//            session.sendData(data, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+//            if (error != nil){println("error")}
+//        }
+//    }
 }

@@ -31,6 +31,7 @@
 		FF4C70F61A893D1F00FB3622 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70F51A893D1F00FB3622 /* circle.png */; };
 		FF4C70F81A8BBC6300FB3622 /* 50x50_ball_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70F71A8BBC6300FB3622 /* 50x50_ball_selected.png */; };
 		FF4C70FA1A8BBC7400FB3622 /* circle_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70F91A8BBC7400FB3622 /* circle_selected.png */; };
+		FF4C70FC1A8BDB4C00FB3622 /* 110x110_hole.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4C70FB1A8BDB4C00FB3622 /* 110x110_hole.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		FF4C70F51A893D1F00FB3622 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = ../../../LetsGame/circle.png; sourceTree = "<group>"; };
 		FF4C70F71A8BBC6300FB3622 /* 50x50_ball_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 50x50_ball_selected.png; path = ../../../interstellar/50x50_ball_selected.png; sourceTree = "<group>"; };
 		FF4C70F91A8BBC7400FB3622 /* circle_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle_selected.png; path = ../../../LetsGame/circle_selected.png; sourceTree = "<group>"; };
+		FF4C70FB1A8BDB4C00FB3622 /* 110x110_hole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 110x110_hole.png; path = ../../../Archive/110x110_hole.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		FF4C705D1A80573E00FB3622 /* TestForCollision */ = {
 			isa = PBXGroup;
 			children = (
+				FF4C70FB1A8BDB4C00FB3622 /* 110x110_hole.png */,
 				FF4C70F91A8BBC7400FB3622 /* circle_selected.png */,
 				FF4C70F71A8BBC6300FB3622 /* 50x50_ball_selected.png */,
 				FF4C70F51A893D1F00FB3622 /* circle.png */,
@@ -258,6 +261,7 @@
 				FF4C70FA1A8BBC7400FB3622 /* circle_selected.png in Resources */,
 				FF4C706F1A80573F00FB3622 /* LaunchScreen.xib in Resources */,
 				FF4C706C1A80573E00FB3622 /* Images.xcassets in Resources */,
+				FF4C70FC1A8BDB4C00FB3622 /* 110x110_hole.png in Resources */,
 				FF4C70631A80573E00FB3622 /* GameScene.sks in Resources */,
 				FF4C70F61A893D1F00FB3622 /* circle.png in Resources */,
 				FF4C70851A80581800FB3622 /* 50x50_ball.png in Resources */,
